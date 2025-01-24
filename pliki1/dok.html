@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walidacja</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.19.5/jquery.validate.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #49934c;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid #015d05;
+        }
+
+
+        fieldset {
+            border: none;
+            padding: 0;
+        }
+
+        legend {
+            font-size: 1.5rem;
+            color: #015d05;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .submit {
+            background-color: #2e7d32;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .submit:hover {
+            color: #1b5e20;
+        }
+
+        #newsleter {
+            margin-top: 20px;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#oneform").validate({
+                rules: {
+                    name: {
+                        required: true,
+                        minlength: 2
+                    },
+                    lastname: {
+                        required: true,
+                        minlength: 2
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    URL: {
+                        required: true,
+                        url: true
+                    },
+                    password: {
+                        required: true,
+                    },
+                    checkbox: {
+                        required: true
+                    }
+                },
+                messages: {
+                    name: {
+                        required: "Proszę podać imię",
+                        minlength: "Imię musi mieć co najmniej 2 znaki"
+                    },
+                    lastname: {
+                        required: "Proszę podać nazwisko",
+                        minlength: "Nazwisko musi mieć co najmniej 2 znaki"
+                    },
+                    email: {
+                        required: "Proszę podać adres e-mail",
+                        email: "Proszę podać poprawny adres e-mail"
+                    },
+                    URL: {
+                        required: "Proszę podać adres URL",
+                        url: "Proszę podać poprawny adres URL"
+                    },
+                    password: {
+                        required: "Proszę podać hasło",
+                    },
+                    checkbox: {
+                        required: "Musisz zaakceptować politykę"
+                    }
+                },
+                errorElement: "div",
+                errorPlacement: function (error, element) {
+                    error.addClass("error");
+                    error.insertAfter(element);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="oneform" method="get" action="walidacja.html" autocomplete="off">
+        <fieldset>
+            <legend>Rejestracja</legend>
+            <p>
+                <label for="firstname">Imię:</label>
+                <input id="firstname" name="name" minlength="2" type="text" required>
+            </p>
+            <p>
+                <label for="lastname">Nazwisko:</label>
+                <input id="lastname" name="lastname" type="text" required>
+            </p>
+            <p>
+                <label for="cemail">Adres e-mail:</label>
+                <input id="cemail" name="email" type="email" required>
+            </p>
+            <p>
+                <label for="cUrl">URL:</label>
+                <input id="cUrl" name="URL" type="url" required>
+            </p>
+            <p>
+                <label for="cpassword">Hasło:</label>
+                <input id="cpassword" name="password" type="password" required>
+            </p>
+            <p>
+                <label for="agree">Akceptuję politykę(wymagane):</label>
+                <input id="agree" name="checkbox" type="checkbox" required>
+            </p>
+            <p>
+                <input type="submit" class="submit" value="Zarezerwuj">
+            </p>
+        </fieldset>
+    </form>
+</body>
+</html>
