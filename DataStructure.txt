@@ -1,9 +1,0 @@
-﻿Get data from file Data.txt
-Structure:
-{
-	artist
-	album
-	songsNumber 
-	year   (of edition)
-	downloadNumber
-}
